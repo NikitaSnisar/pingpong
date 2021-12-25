@@ -28,13 +28,6 @@ class GameSprite(sprite.Sprite):
     def reset(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
-raketka = ('raketka.jpg', 5, win_height - 80, 0)
-raketka = ('raketka.jpg', 5, win_height - 80, 0)
-
-
-
-
-
 class Player(GameSprite):
    #метод для управления 2м игрком стрелками клавиатуры
     def update(self):
@@ -45,15 +38,16 @@ class Player(GameSprite):
             self.rect.x += self.speed
  
 
- 
+raketka = Player('raketka.jpg',335, 0, 50,50, 10)
+raketka2 = Player('raketka.jpg', -335, 0, 50,50, 10)
+ball = Player("ball.jpg", 0, 0,50,50,5)
+
 while game:
-    if finish != True:
-        ball_rect.x += speed_x
-        ball_rect.y += speed_y
-    
-    if sprite.collide_rect(rackt1, ball):
-        or sprite collide_rect(racket2, ball)
-            speed_x *= -1
+    for e in event.get():
+        if e.type == QUIT:
+            game = False
+    if sprite.collide_rect(raketka, ball) or sprite.collide_rect(raketka2, ball):
+        speed_x *= -1
 
 
     display.update()
